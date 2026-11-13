@@ -72,4 +72,36 @@ while current:
     current = current.next
 print(None)
 
-#revursive method  
+
+
+
+#revursive method   # there can be two  cases ethier ll is empty means head is null or just  one elment    
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: ListNode | None) -> ListNode | None:
+        if (head is None or head.next is None):
+            return head
+        
+        newhead = self.reverseList(head.next)
+        head.next.next = head 
+        head.next = None
+        return newhead
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+

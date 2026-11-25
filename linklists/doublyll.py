@@ -86,11 +86,8 @@ def insertend(newhead, data):
             
     return newhead
 
-
-
- 
-new = insertend(newhead, 50)
-temp = new
+newhead = insertend(newhead, 50)
+temp = newhead
 print(None,end="<->")
 while temp:
     print(temp.data, end="<->")
@@ -98,11 +95,129 @@ while temp:
 
 print(None)
 
+# insert in a specific location lets add after 2nd index node  consider ll 0 index ll
+def insertatps(newhead,data,ps):
+    count = 0 
 
-    
-    
-    
-    
+    temp = newhead
+    node = Node(data)
+    while temp:
+        if count == ps:
+            node.next = temp.next
+            temp.next.prev = node
+            temp.next = node   
+            node.prev = temp
+        temp = temp.next
+        count = count + 1
+    return newhead
 
-        
 
+
+insertatps(newhead,25,2)
+temp = newhead
+print(None,end="<->")
+while temp:
+    print(temp.data, end="<->")
+    temp = temp.next
+
+print(None)
+
+# also for loop can be use to reach that position 
+def insertAtPos(head, p, x):
+    newnode = Node(x)
+    cur = head
+
+    # traverse to the given position
+    for _ in range(p):
+        cur = cur.next
+
+    if cur.next is None:
+        cur.next = newnode
+        newnode.prev = cur
+    else:
+        newnode.next = cur.next
+        cur.next = newnode
+        newnode.next.prev = newnode
+        newnode.prev = cur
+    return head
+
+insertAtPos(newhead, 3, 28)
+
+            
+temp = newhead
+print(None,end="<->")
+while temp:
+    print(temp.data, end="<->")
+    temp = temp.next
+print(None)
+
+
+
+# remove head 
+def removehead(newhead):
+    Newhead = newhead.next 
+
+    Newhead.prev = None 
+
+    return Newhead
+
+Newhead = removehead(newhead)
+temp =  Newhead
+print(None,end="<->")
+while temp:
+    print(temp.data, end="<->")
+    temp = temp.next
+print(None)
+
+
+# Python Program to delete a node from the end of Doubly Linked List
+def delfromend(head):
+
+    curr = head
+     # Corner cases
+    if head is None:
+        return None
+    if head.next is None:
+        return None
+
+    while curr.next:
+
+        curr = curr.next
+
+
+    curr.prev.next = None 
+
+    return head
+
+
+Newhead = delfromend(Newhead)
+temp =  Newhead
+print(None,end="<->")
+while temp:
+    print(temp.data, end="<->")
+    temp = temp.next
+print(None)
+
+
+
+# reverse a dubly link list 
+
+head = Newhead
+while head:
+    temp = head.next
+    head.next = head.prev 
+    head.prev = temp
+    if temp is None:
+        Newhead = head  # Original last node becomes the new head
+
+    head = head.prev
+
+
+
+
+temp =  Newhead
+print(None,end="<->")
+while temp:
+    print(temp.data, end="<->")
+    temp = temp.next
+print(None)
